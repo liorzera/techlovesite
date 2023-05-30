@@ -7,6 +7,8 @@ Technological Love is a graph representation of theoretical work on beings, form
 
 Unless otherwise noted, the theory on this site is by lior zera. Though, like all creation, it is really the work of us all.
 
+[[method]]
+
 ## explore
 
 
