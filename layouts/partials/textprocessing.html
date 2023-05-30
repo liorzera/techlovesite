@@ -65,7 +65,7 @@
     <!-- If path to Hugo page -->
     {{if not (eq $curpage.String "nopPage") }}
       {{$block := default "" (index $reference 1)}}
-      {{$block = strings.TrimRight "/" (cond (eq $block "") $block (printf "%s" $block)) | urlize | lower}}
+      {{$block = strings.TrimRight "/" (cond (eq $block "") $block (printf "#%s" $block)) | urlize | lower}}
       {{$href := strings.TrimRight "/" $curpage.RelPermalink}}
       {{$link := printf "<a href=\"%s%s\" rel=\"noopener\" class=\"internal-link\" data-src=\"%s\">%s</a>" $href $block $href $display}}
       {{$content = replace $content . $link}}
@@ -116,7 +116,7 @@
 {{end}}
 
 {{/* Add jumpable anchors */}}
-{{ $content = $content | replaceRE "(<h[1-9] id=\"([^\"]+)\">)(.+)(</h[1-9]>)" `<a href="#${2}">${1}<span class="hanchor" ariaLabel="Anchor"># </span>${3}${4}</a>` }}
+{{ $content = $content | replaceRE "(<h[1-9] id=\"([^\"]+)\">)(.+)(</h[1-9]>)" `<a href="#${2}">${1}<span class="hanchor" ariaLabel="Anchor"> </span>${3}${4}</a>` }}
 
 {{/* Callouts */}}
 {{if $.Site.Data.config.enableCallouts}}
